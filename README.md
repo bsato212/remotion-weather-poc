@@ -1,4 +1,4 @@
-# Remotion video
+# Remotion Weather POC
 
 <p align="center">
   <a href="https://github.com/JonnyBurger/remotion-logo">

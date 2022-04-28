@@ -1,24 +1,33 @@
 {
   "name": "remotion-weather-poc",
   "version": "1.0.0",
-  "description": "My Remotion video",
+  "description": "Remotion Weather POC",
   "scripts": {
+    "audio": "node ./audio",
     "start": "remotion preview src/index.jsx",
-    "build": "remotion render src/index.jsx HelloWorld out/video.mp4",
+    "build": "npm run audio && remotion render src/index.jsx RemotionWeatherPOC out/video.mp4",
     "upgrade": "remotion upgrade",
     "test": "eslint src --ext ts,tsx,js,jsx"
   },
   "repository": {},
-  "license": "UNLICENSED",
+  "license": "MIT",
   "dependencies": {
     "@remotion/bundler": "^3.0.0",
     "@remotion/cli": "^3.0.0",
     "@remotion/eslint-config": "^3.0.0",
     "@remotion/renderer": "^3.0.0",
+    "aws-sdk": "^2.1121.0",
+    "axios": "^0.27.0",
+    "dotenv": "^16.0.0",
     "eslint": "^8.14.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.3",
+    "moment-timezone": "^0.5.34",
+    "node-fetch": "^3.2.3",
     "prettier": "^2.6.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "remotion": "^3.0.0"
+    "remotion": "^3.0.0",
+    "unsplash-js": "^7.0.15"
   }
 }

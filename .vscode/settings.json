@@ -3,7 +3,7 @@
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"editor.codeActionsOnSave": {
 		"source.organizeImports": false,
-		"source.fixAll": true
+		"source.fixAll": false
 	},
 	"typescript.enablePromptUseWorkspaceTsdk": true
 }

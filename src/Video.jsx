@@ -1,38 +1,33 @@
-import {Composition} from 'remotion';
-import {HelloWorld} from './HelloWorld';
-import {Logo} from './HelloWorld/Logo';
-import {Subtitle} from './HelloWorld/Subtitle';
+import { useState, useEffect } from 'react'
+import { delayRender, continueRender, Composition } from 'remotion';
+import { getAudioDuration } from '@remotion/media-utils';
+import { Weather } from './Weather';
+import narration from './narration.mp3';
 
-export const RemotionVideo = () => {
+const FPS = 30;
+const WIDTH = 1920;
+const HEIGHT = 1080;
+
+export const Video = () => {
+	const [handle] = useState(() => delayRender());
+	const [duration, setDuration] = useState(1);
+
+	useEffect(() => {
+		getAudioDuration(narration).then((durationInSeconds) => {
+			setDuration(Math.round(durationInSeconds * FPS));
+			continueRender(handle);
+		});
+	}, [handle]);
+
 	return (
 		<>
 			<Composition
-				id="HelloWorld"
-				component={HelloWorld}
-				durationInFrames={150}
-				fps={30}
-				width={1920}
-				height={1080}
-				defaultProps={{
-					titleText: 'Welcome to Remotion',
-					titleColor: 'black',
-				}}
-			/>
-			<Composition
-				id="Logo"
-				component={Logo}
-				durationInFrames={200}
-				fps={30}
-				width={1920}
-				height={1080}
-			/>
-			<Composition
-				id="Title"
-				component={Subtitle}
-				durationInFrames={100}
-				fps={30}
-				width={1920}
-				height={1080}
+				id="RemotionWeatherPOC"
+				component={Weather}
+				durationInFrames={duration}
+				fps={FPS}
+				width={WIDTH}
+				height={HEIGHT}
 			/>
 		</>
 	);
